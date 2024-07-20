@@ -15,7 +15,7 @@ public class Base {
     public void init(){
         System.out.println("Launching the Browser.");
         playwright = Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        browser = playwright.chromium().launch();
         page = browser.newPage();
         page.navigate("https://flipkart.com");
         System.out.println("Navigated to URL.");
