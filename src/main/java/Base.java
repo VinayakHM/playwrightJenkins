@@ -2,6 +2,8 @@ import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
+import java.nio.file.Paths;
+
 public class Base {
     Playwright playwright;
     Page page;
@@ -17,7 +19,12 @@ public class Base {
         browser = playwright.chromium().launch();
         page = browser.newPage();
         page.navigate("https://flipkart.com");
+        page.screenshot(new Page.ScreenshotOptions()
+                .setPath(Paths.get("screenshot.png")));
         System.out.println("Navigated to URL.");
+        page.screenshot(new Page.ScreenshotOptions()
+                .setPath(Paths.get("screenshot.png"))
+                .setFullPage(true));
     }
 
     public void teardown(){
